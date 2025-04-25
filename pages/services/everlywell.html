@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everlywell - Tests de santé à domicile | HealthCompare</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <meta name="description" content="Découvrez les tests de santé à domicile Everlywell - Tests fiables avec résultats professionnels">
+    <style>
+        /* Service page specific styles */
+        .service-hero {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .service-hero img {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .service-features {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .feature {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .popular-tests {
+            padding: 60px 0;
+            background-color: #f0f7ff;
+        }
+        
+        .tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .test-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .test-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .test-card-content {
+            padding: 20px;
+        }
+        
+        .test-card h3 {
+            margin-bottom: 10px;
+        }
+        
+        .test-card p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .cta-section {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: white;
+        }
+        
+        .cta-section p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn-white {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        .btn-white:hover {
+            background-color: #f0f0f0;
+            color: var(--primary-color);
+        }
+        
+        .how-it-works {
+            padding: 60px 0;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+        }
+        
+        .testimonials {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+        }
+        
+        .faq-section {
+            padding: 60px 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .steps {
+                flex-direction: column;
+            }
+            
+            .step {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>HealthCompare</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">Accueil</a></li>
+                    <li><a href="../comparators/index.html">Comparateurs produits</a></li>
+                    <li><a href="../blog/index.html">Blog santé</a></li>
+                    <li><a href="../services/index.html">Services</a></li>
+                    <li><a href="../about/index.html">À propos</a></li>
+                    <li><a href="../legal/index.html">Mentions légales</a></li>
+                    <li><a href="../contact/index.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="service-hero">
+        <div class="container">
+            <img src="../../images/everlywell-placeholder.jpg" alt="Everlywell Logo">
+            <h1>Everlywell - Tests de santé à domicile</h1>
+            <p>Des tests de santé fiables et pratiques à réaliser chez vous, avec des résultats analysés par des laboratoires certifiés</p>
+            <a href="https://www.shareasale.com/" class="btn btn-primary" rel="sponsored" target="_blank">Voir les offres Everlywell</a>
+        </div>
+    </section>
+
+    <section class="service-features">
+        <div class="container">
+            <h2>Pourquoi choisir Everlywell ?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Tests à domicile</h3>
+                    <p>Réalisez vos tests de santé confortablement chez vous, sans rendez-vous ni déplacement.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Laboratoires certifiés</h3>
+                    <p>Tous les échantillons sont analysés par des laboratoires certifiés CLIA pour garantir des résultats fiables.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Résultats détaillés</h3>
+                    <p>Recevez des résultats clairs et détaillés avec des explications sur ce qu'ils signifient pour votre santé.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👨‍⚕️</div>
+                    <h3>Suivi médical</h3>
+                    <p>Possibilité de consulter un professionnel de santé pour discuter de vos résultats si nécessaire.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Confidentialité</h3>
+                    <p>Vos données de santé sont protégées et sécurisées conformément aux normes HIPAA.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Économies</h3>
+                    <p>Des tests abordables, souvent moins chers que ceux réalisés dans les laboratoires traditionnels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="popular-tests">
+        <div class="container">
+            <h2>Tests populaires</h2>
+            <div class="tests-grid">
+                <div class="test-card">
+                    <img src="../../images/test1-placeholder.jpg" alt="Test de cholestérol">
+                    <div class="test-card-content">
+                        <h3>Test de cholestérol</h3>
+                        <p>Mesurez vos niveaux de cholestérol total, HDL, LDL et triglycérides pour évaluer votre santé cardiovasculaire.</p>
+                        <div class="price">À partir de $49</div>
+                        <a href="https://www.shareasale.com/" class="btn btn-primary" rel="sponsored" target="_blank">Commander</a>
+                    </div>
+                </div>
+                <div class="test-card">
+                    <img src="../../images/test2-placeholder.jpg" alt="Test de thyroïde">
+                    <div class="test-card-content">
+                        <h3>Test de thyroïde</h3>
+                        <p>Évaluez la fonction de votre thyroïde avec ce test complet qui mesure les niveaux de TSH, T3 et T4.</p>
+                        <div class="price">À partir de $99</div>
+                        <a href="https://www.shareasale.com/" class="btn btn-primary" rel="sponsored" target="_blank">Commander</a>
+                    </div>
+                </div>
+                <div class="test-card">
+                    <img src="../../images/test3-placeholder.jpg" alt="Test de carence en vitamines">
+                    <div class="test-card-content">
+                        <h3>Test de carence en vitamines</h3>
+                        <p>Identifiez les carences potentielles en vitamines essentielles comme B, D et E pour optimiser votre santé.</p>
+                        <div class="price">À partir de $89</div>
+                        <a href="https://www.shareasale.com/" class="btn btn-primary" rel="sponsored" target="_blank">Commander</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prenez votre santé en main dès aujourd'hui</h2>
+            <p>Avec plus de 30 tests différents disponibles, Everlywell vous permet de surveiller votre santé de manière proactive et pratique.</p>
+            <a href="https://www.shareasale.com/" class="btn btn-white" rel="sponsored" target="_blank">Découvrir tous les tests</a>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2>Comment ça marche</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Commandez votre test</h3>
+                    <p>Choisissez le test qui correspond à vos besoins et commandez-le en ligne. Il sera livré directement chez vous.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Collectez votre échantillon</h3>
+                    <p>Suivez les instructions simples pour collecter votre échantillon (sang, urine, salive, etc.) dans le confort de votre domicile.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Envoyez votre échantillon</h3>
+                    <p>Utilisez l'enveloppe prépayée fournie pour envoyer votre échantillon au laboratoire certifié.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Recevez vos résultats</h3>
+                    <p>Consultez vos résultats en ligne dans un délai de quelques jours, avec des explications claires et des recommandations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Ce que disent nos clients</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"J'ai utilisé le test de thyroïde d'Everlywell et j'ai été impressionné par la simplicité du processus et la clarté des résultats. Cela m'a permis d'avoir une conversation plus informée avec mon médecin."</p>
+                    <div class="testimonial-author">- Marie L.</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Le test de carence en vitamines a révélé que j'avais un niveau de vitamine D très bas. Grâce à cette information, j'ai pu ajuster mon alimentation et prendre des suppléments. Je me sens beaucoup mieux maintenant !"</p>
+                    <div class="testimonial-author">- Thomas R.</div>
+                </div>
+                <div class="testimonial">
+                    <p>"En tant que personne très occupée, j'apprécie vraiment la commodité des tests Everlywell. Pouvoir faire ces tests à la maison quand cela me convient est un énorme avantage."</p>
+                    <div class="testimonial-author">- Sophie M.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2>Questions fréquemment posées</h2>
+            <div class="faq-item">
+                <h3>Les tests Everlywell sont-ils fiables ?</h3>
+                <p>Oui, tous les tests Everlywell sont analysés par des laboratoires certifiés CLIA qui respectent les mêmes normes que ceux utilisés par les médecins et les hôpitaux. Les méthodes de test sont validées scientifiquement pour garantir leur précision.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Les tests Everlywell sont-ils couverts par l'assurance ?</h3>
+                <p>Actuellement, la plupart des tests Everlywell ne sont pas directement couverts par les assurances. Cependant, vous pouvez utiliser votre compte FSA ou HSA pour payer vos tests, et dans certains cas, soumettre vos résultats à votre assurance pour un remboursement potentiel.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Combien de temps faut-il pour recevoir les résultats ?</h3>
+                <p>Une fois que votre échantillon arrive au laboratoire, vous recevrez généralement vos résultats dans un délai de 5 à 7 jours ouvrables, selon le type de test.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Que se passe-t-il si mes résultats sont anormaux ?</h3>
+                <p>Si vos résultats sont anormaux, Everlywell vous fournira des informations sur ce que cela signifie et des recommandations sur les prochaines étapes. Pour certains tests, vous aurez également la possibilité de discuter de vos résultats avec un professionnel de la santé.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Les tests Everlywell remplacent-ils une visite chez le médecin ?</h3>
+                <p>Non, les tests Everlywell sont conçus pour compléter, et non remplacer, les soins médicaux traditionnels. Ils peuvent vous aider à surveiller votre santé et à avoir des conversations plus informées avec votre médecin, mais ne constituent pas un diagnostic médical.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prêt à prendre votre santé en main ?</h2>
+            <p>Commandez votre test Everlywell aujourd'hui et faites le premier pas vers une meilleure compréhension de votre santé.</p>
+            <a href="https://www.shareasale.com/" class="btn btn-white" rel="sponsored" target="_blank">Voir tous les tests disponibles</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>HealthCompare</h2>
+                    <p>Votre guide pour des choix de santé éclairés</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="../../index.html">Accueil</a></li>
+                        <li><a href="../comparators/index.html">Comparateurs</a></li>
+                        <li><a href="../blog/index.html">Blog</a></li>
+                        <li><a href="../services/index.html">Services</a></li>
+                        <li><a href="../about/index.html">À propos</a></li>
+                        <li><a href="../legal/index.html">Mentions légales</a></li>
+                        <li><a href="../contact/index.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Services affiliés</h3>
+                    <ul>
+                        <li><a href="teladoc.html" rel="sponsored">Teladoc Health</a></li>
+                        <li><a href="sesamecare.html" rel="sponsored">Sesame Care</a></li>
+                        <li><a href="everlywell.html" rel="sponsored">Everlywell</a></li>
+                        <li><a href="letsgetchecked.html" rel="sponsored">LetsGetChecked</a></li>
+                        <li><a href="hims-hers.html" rel="sponsored">Hims / Hers</a></li>
+                        <li><a href="smiledirectclub.html" rel="sponsored">SmileDirectClub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p>Email: info@healthcompare.com</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">Facebook</a>
+                        <a href="#" class="social-icon">Twitter</a>
+                        <a href="#" class="social-icon">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="affiliate-disclosure">Ce site contient des liens affiliés. Nous pouvons toucher une commission si vous achetez via ces liens, sans coût supplémentaire pour vous.</p>
+                <p class="copyright">&copy; 2025 HealthCompare. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/affiliate-tracking.js"></script>
+    <script src="../../js/analytics.js"></script>
+</body>
+</html>
