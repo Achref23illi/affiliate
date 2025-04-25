@@ -233,5 +233,16 @@ class FormManager {
     }
 }
 
+// Ensure buttons with href navigate correctly
+const buttonsWithHref = document.querySelectorAll('.btn[href]');
+buttonsWithHref.forEach(button => {
+    button.addEventListener('click', (event) => {
+        const href = button.getAttribute('href');
+        if (href && href !== '#') {
+            window.location.href = href;
+        }
+    });
+});
+
 // Initialize form manager
 window.formManager = new FormManager();

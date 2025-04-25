@@ -5,6 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
     initScrollBehavior();
     setupLazyLoading();
+
+    // Ensure default behavior for anchor tags with href
+    const anchorTags = document.querySelectorAll('a[href]');
+    anchorTags.forEach(anchor => {
+        anchor.addEventListener('click', (event) => {
+            const href = anchor.getAttribute('href');
+            if (href && href !== '#') {
+                window.location.href = href;
+            }
+        });
+    });
 });
 
 function initMobileNav() {
