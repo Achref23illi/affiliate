@@ -1,11 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical, Pharmaceutical & Dental Affiliate Site</title>
+    <title>HealthCompare - Comparateur de produits et services de santé</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <meta name="theme-color" content="#3498db">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
-    <meta name="description" content="Information and comparison platform for medical, pharmaceutical, and dental products and services">
+    
+    <meta name="description" content="Comparaisons impartiales et guides pour vous aider à prendre les meilleures décisions concernant votre santé">
+    
+    <!-- Performance and UI Enhancement Scripts -->
+    <script src="js/performance.js" defer></script>
+    <script src="js/notifications.js" defer></script>
+    <script src="js/loading-manager.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/testimonial-manager.js" defer></script>
+    <script src="js/form-manager.js" defer></script>
+    <script src="js/affiliate-tracking.js" defer></script>
+    <script src="js/analytics.js" defer></script>
+    <script src="js/main.js" defer></script>
 </head>
 <body>
     <header>
@@ -27,92 +52,265 @@
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero animate-on-scroll" data-animation="fade-in">
         <div class="container">
             <h2>Trouvez les meilleurs produits et services de santé</h2>
             <p>Comparaisons impartiales, avis d'experts et guides pour vous aider à prendre les meilleures décisions concernant votre santé</p>
             <div class="cta-buttons">
                 <a href="pages/comparators/index.html" class="btn btn-primary">Voir les comparateurs</a>
-                <a href="pages/blog/index.html" class="btn btn-secondary">Lire nos articles</a>
+                <a href="pages/blog/index.html" class="btn btn-outline">Lire nos articles</a>
             </div>
         </div>
     </section>
 
-    <section class="featured-comparisons">
+    <section class="featured-comparisons animate-on-scroll" data-animation="slide-up">
         <div class="container">
             <h2>Comparateurs populaires</h2>
+            <div class="section-intro">
+                <p>Nos comparateurs vous aident à choisir les meilleurs produits de santé adaptés à vos besoins et à votre budget.</p>
+            </div>
             <div class="comparison-grid">
-                <div class="comparison-card">
-                    <img src="images/aligners-placeholder.jpg" alt="Aligneurs dentaires">
-                    <h3>Aligneurs dentaires</h3>
-                    <p>Comparez les meilleurs aligneurs invisibles du marché</p>
-                    <a href="pages/comparators/aligners.html" class="btn btn-small">Comparer</a>
+                <div class="comparison-card" data-dynamic-content data-skeleton-type="card">
+                    <div class="card-img-container">
+                        <img src="images/aligners-placeholder.jpg" alt="Aligneurs dentaires" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Aligneurs dentaires</h3>
+                        <p>Comparez les meilleurs aligneurs invisibles du marché pour un sourire parfait</p>
+                        <div class="card-footer">
+                            <a href="pages/comparators/aligners.html" class="btn btn-small">Comparer</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="comparison-card">
-                    <img src="images/health-tests-placeholder.jpg" alt="Tests de santé">
-                    <h3>Tests de santé</h3>
-                    <p>Trouvez les tests de santé à domicile les plus fiables</p>
-                    <a href="pages/comparators/health-tests.html" class="btn btn-small">Comparer</a>
+                <div class="comparison-card" data-dynamic-content data-skeleton-type="card">
+                    <div class="card-img-container">
+                        <img src="images/health-tests-placeholder.jpg" alt="Tests de santé" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Tests de santé</h3>
+                        <p>Trouvez les tests de santé à domicile les plus fiables et précis</p>
+                        <div class="card-footer">
+                            <a href="pages/comparators/health-tests.html" class="btn btn-small">Comparer</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="comparison-card">
-                    <img src="images/toothbrushes-placeholder.jpg" alt="Brosses dentaires">
-                    <h3>Brosses dentaires</h3>
-                    <p>Découvrez les meilleures brosses à dents électriques</p>
-                    <a href="pages/comparators/toothbrushes.html" class="btn btn-small">Comparer</a>
+                <div class="comparison-card" data-dynamic-content data-skeleton-type="card">
+                    <div class="card-img-container">
+                        <img src="images/toothbrushes-placeholder.jpg" alt="Brosses dentaires" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Brosses dentaires</h3>
+                        <p>Découvrez les meilleures brosses à dents électriques pour une hygiène optimale</p>
+                        <div class="card-footer">
+                            <a href="pages/comparators/toothbrushes.html" class="btn btn-small">Comparer</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="featured-services">
+    <section class="featured-services section-light animate-on-scroll" data-animation="slide-up">
         <div class="container">
             <h2>Services de santé recommandés</h2>
+            <div class="section-intro">
+                <p>Nous avons sélectionné pour vous les meilleurs services de santé en ligne, évalués selon des critères stricts de qualité et de rapport qualité-prix.</p>
+            </div>
             <div class="services-grid">
-                <div class="service-card">
-                    <img src="images/teladoc-placeholder.jpg" alt="Teladoc Health">
-                    <h3>Teladoc Health</h3>
-                    <p>Consultations médicales en ligne avec des médecins certifiés</p>
-                    <a href="pages/services/teladoc.html" class="btn btn-small" rel="sponsored">En savoir plus</a>
+                <div class="service-card" data-dynamic-content data-skeleton-type="card">
+                    <div class="card-img-container">
+                        <img src="images/teladoc-placeholder.jpg" alt="Teladoc Health" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Teladoc Health</h3>
+                        <p>Consultations médicales en ligne avec des médecins certifiés disponibles 24h/24 et 7j/7</p>
+                        <div class="tags">
+                            <span class="badge badge-primary">Télémédecine</span>
+                            <span class="badge badge-secondary">Consultation</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="pages/services/teladoc.html" class="btn btn-small" rel="sponsored">En savoir plus</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <img src="images/everlywell-placeholder.jpg" alt="Everlywell">
-                    <h3>Everlywell</h3>
-                    <p>Tests de santé à domicile avec résultats professionnels</p>
-                    <a href="pages/services/everlywell.html" class="btn btn-small" rel="sponsored">En savoir plus</a>
+                <div class="service-card" data-dynamic-content data-skeleton-type="card">
+                    <div class="card-img-container">
+                        <img src="images/everlywell-placeholder.jpg" alt="Everlywell" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Everlywell</h3>
+                        <p>Tests de santé à domicile avec résultats professionnels et conseils personnalisés</p>
+                        <div class="tags">
+                            <span class="badge badge-primary">Tests</span>
+                            <span class="badge badge-secondary">À domicile</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="pages/services/everlywell.html" class="btn btn-small" rel="sponsored">En savoir plus</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <img src="images/smiledirectclub-placeholder.jpg" alt="SmileDirectClub">
-                    <h3>SmileDirectClub</h3>
-                    <p>Aligneurs dentaires invisibles à prix abordable</p>
-                    <a href="pages/services/smiledirectclub.html" class="btn btn-small" rel="sponsored">En savoir plus</a>
+                <div class="service-card" data-dynamic-content data-skeleton-type="card">
+                    <div class="card-img-container">
+                        <img src="images/smiledirectclub-placeholder.jpg" alt="SmileDirectClub" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>SmileDirectClub</h3>
+                        <p>Aligneurs dentaires invisibles à prix abordable avec suivi à distance</p>
+                        <div class="tags">
+                            <span class="badge badge-primary">Dentaire</span>
+                            <span class="badge badge-secondary">Aligneurs</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="pages/services/smiledirectclub.html" class="btn btn-small" rel="sponsored">En savoir plus</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="recent-articles">
+    <section class="recent-articles animate-on-scroll" data-animation="slide-up">
         <div class="container">
             <h2>Articles récents</h2>
+            <div class="section-intro">
+                <p>Restez informé des dernières tendances et innovations en matière de santé grâce à nos articles rédigés par des experts.</p>
+            </div>
             <div class="articles-grid">
                 <div class="article-card">
-                    <img src="images/article1-placeholder.jpg" alt="Article sur la santé">
-                    <h3>Comment choisir le bon test de santé à domicile</h3>
-                    <p>Guide complet pour sélectionner le test qui répond à vos besoins spécifiques</p>
-                    <a href="pages/blog/choosing-health-test.html" class="btn btn-small">Lire l'article</a>
+                    <div class="card-img-container">
+                        <img src="images/article1-placeholder.jpg" alt="Comment choisir le bon test de santé à domicile" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Comment choisir le bon test de santé à domicile</h3>
+                        <p>Guide complet pour sélectionner le test qui répond à vos besoins spécifiques</p>
+                        <div class="card-footer">
+                            <a href="pages/blog/choosing-health-test.html" class="btn btn-small">Lire l'article</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="article-card">
-                    <img src="images/article2-placeholder.jpg" alt="Article sur la santé">
-                    <h3>Les avantages des consultations médicales en ligne</h3>
-                    <p>Découvrez pourquoi la télémédecine révolutionne l'accès aux soins</p>
-                    <a href="pages/blog/telemedicine-benefits.html" class="btn btn-small">Lire l'article</a>
+                    <div class="card-img-container">
+                        <img src="images/article2-placeholder.webp" alt="Les avantages des consultations médicales en ligne" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Les avantages des consultations médicales en ligne</h3>
+                        <p>Découvrez pourquoi la télémédecine révolutionne l'accès aux soins</p>
+                        <div class="card-footer">
+                            <a href="pages/blog/telemedicine-benefits.html" class="btn btn-small">Lire l'article</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="article-card">
-                    <img src="images/article3-placeholder.jpg" alt="Article sur la santé">
-                    <h3>Aligneurs invisibles vs bagues traditionnelles</h3>
-                    <p>Comparaison détaillée pour vous aider à faire le meilleur choix</p>
-                    <a href="pages/blog/aligners-vs-braces.html" class="btn btn-small">Lire l'article</a>
+                    <div class="card-img-container">
+                        <img src="images/article3-placeholder.jpg" alt="Aligneurs invisibles vs bagues traditionnelles" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Aligneurs invisibles vs bagues traditionnelles</h3>
+                        <p>Comparaison détaillée pour vous aider à faire le meilleur choix</p>
+                        <div class="card-footer">
+                            <a href="pages/blog/aligners-vs-braces.html" class="btn btn-small">Lire l'article</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="card-img-container">
+                        <img src="images/test1-placeholder.jpg" alt="Les meilleurs compléments nutritionnels pour renforcer votre immunité" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Les meilleurs compléments nutritionnels pour renforcer votre immunité</h3>
+                        <p>Découvrez quels suppléments sont scientifiquement prouvés pour soutenir votre système immunitaire</p>
+                        <div class="card-footer">
+                            <a href="pages/blog/immune-boosting-supplements.html" class="btn btn-small">Lire l'article</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="card-img-container">
+                        <img src="images/test2-placeholder.jpg" alt="Guide complet des soins dentaires à domicile" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Guide complet des soins dentaires à domicile</h3>
+                        <p>Conseils d'experts pour maintenir une hygiène bucco-dentaire optimale entre vos visites chez le dentiste</p>
+                        <div class="card-footer">
+                            <a href="pages/blog/home-dental-care-guide.html" class="btn btn-small">Lire l'article</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="card-img-container">
+                        <img src="images/test3-placeholder.jpg" alt="Comment interpréter vos résultats de tests sanguins" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Comment interpréter vos résultats de tests sanguins</h3>
+                        <p>Comprendre les indicateurs clés de vos analyses de sang pour mieux suivre votre santé</p>
+                        <div class="card-footer">
+                            <a href="pages/blog/understanding-blood-test-results.html" class="btn btn-small">Lire l'article</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="testimonials section-light animate-on-scroll" data-animation="fade-in">
+        <div class="container">
+            <h2>Ce que nos utilisateurs disent</h2>
+            <div class="testimonial-slider" data-dynamic-content>
+                <div class="testimonial">
+                    <p>"Grâce au comparatif des aligneurs dentaires de HealthCompare, j'ai pu choisir la solution qui correspondait parfaitement à mes besoins et à mon budget. Le processus de décision a été tellement plus simple !"</p>
+                    <div class="testimonial-author">
+                        <img src="images/testimonial1-placeholder.jpg" alt="Marie L." class="testimonial-avatar">
+                        <div>
+                            <strong>Marie L.</strong>
+                            <span>Utilisatrice depuis 2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"Les articles du blog HealthCompare sont une mine d'informations. J'ai appris énormément sur les tests de santé à domicile et j'ai pu faire des choix éclairés pour ma famille."</p>
+                    <div class="testimonial-author">
+                        <img src="images/testimonial2-placeholder.jpg" alt="Thomas R." class="testimonial-avatar">
+                        <div>
+                            <strong>Thomas R.</strong>
+                            <span>Utilisateur depuis 2023</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"Les recommandations de services sont vraiment pertinentes. J'ai testé Teladoc sur votre conseil et je suis impressionné par la qualité du service. Merci pour ce site si utile !"</p>
+                    <div class="testimonial-author">
+                        <img src="images/testimonial3-placeholder.jpg" alt="Sophie M." class="testimonial-avatar">
+                        <div>
+                            <strong>Sophie M.</strong>
+                            <span>Utilisatrice depuis 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-controls">
+                <div class="testimonial-dot active" data-index="0" aria-label="Témoignage 1"></div>
+                <div class="testimonial-dot" data-index="1" aria-label="Témoignage 2"></div>
+                <div class="testimonial-dot" data-index="2" aria-label="Témoignage 3"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter animate-on-scroll" data-animation="slide-up">
+        <div class="container">
+            <h2>Restez informé</h2>
+            <div class="section-intro">
+                <p>Inscrivez-vous à notre newsletter pour recevoir nos derniers articles et conseils santé directement dans votre boîte mail.</p>
+            </div>
+            <form class="newsletter-form">
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Votre adresse email" required aria-label="Votre adresse email">
+                </div>
+                <button type="submit" class="btn btn-primary submit-button">
+                    <span class="button-text">S'inscrire</span>
+                    <div class="spinner"></div>
+                </button>
+                <p class="form-notice">En vous inscrivant, vous acceptez notre politique de confidentialité. Vous pouvez vous désinscrire à tout moment.</p>
+            </form>
         </div>
     </section>
 
@@ -150,21 +348,29 @@
                     <h3>Contact</h3>
                     <p>Email: info@healthcompare.com</p>
                     <div class="social-links">
-                        <a href="#" class="social-icon">Facebook</a>
-                        <a href="#" class="social-icon">Twitter</a>
-                        <a href="#" class="social-icon">Instagram</a>
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <span class="visually-hidden">Facebook</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <span class="visually-hidden">Twitter</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <span class="visually-hidden">Instagram</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="affiliate-disclosure">Ce site contient des liens affiliés. Nous pouvons toucher une commission si vous achetez via ces liens, sans coût supplémentaire pour vous.</p>
+                <p class="affiliate-disclosure" role="note">Ce site contient des liens affiliés. Nous pouvons toucher une commission si vous achetez via ces liens, sans coût supplémentaire pour vous.</p>
                 <p class="copyright">&copy; 2025 HealthCompare. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Main and utility scripts -->
     <script src="js/main.js"></script>
-    <script src="js/affiliate-tracking.js"></script>
-    <script src="js/analytics.js"></script>
 </body>
 </html>

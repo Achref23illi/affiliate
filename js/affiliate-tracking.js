@@ -1,78 +1,148 @@
-// Affiliate link tracking script
-document.addEventListener('DOMContentLoaded', function() {
-    // Track all affiliate link clicks
-    const trackAffiliateLinks = () => {
-        document.querySelectorAll('a[rel="sponsored"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Log click to console (for development purposes)
-                console.log('Affiliate link clicked:', this.href);
-                
-                // In a real implementation, this would send data to Google Analytics
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'affiliate_click', {
-                        'event_category': 'Outbound Links',
-                        'event_label': this.href,
-                        'transport_type': 'beacon'
-                    });
-                }
-                
-                // Add UTM parameters to links if they don't already have them
-                if (!this.href.includes('utm_source=')) {
-                    // Prevent modifying the href if it already has UTM parameters
-                    const separator = this.href.includes('?') ? '&' : '?';
-                    this.href = this.href + separator + 'utm_source=healthcompare&utm_medium=affiliate&utm_campaign=website';
-                }
+// Affiliate Link and Conversion Tracking
+class AffiliateTracker {
+    constructor() {
+        this.initTracking();
+        this.handleUtmParams();
+        this.initConversionTracking();
+    }
+
+    initTracking() {
+        // Track affiliate link clicks
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[rel="sponsored"]');
+            if (!link) return;
+
+            // Prevent default to handle the click
+            e.preventDefault();
+
+            const trackingData = {
+                url: link.href,
+                text: link.textContent.trim(),
+                location: this.getPageSection(link),
+                timestamp: new Date().toISOString(),
+                sessionId: this.getSessionId()
+            };
+
+            // Log the click
+            this.logAffiliateClick(trackingData);
+
+            // Add tracking parameters
+            const enrichedUrl = this.enrichUrl(link.href, trackingData);
+            
+            // Navigate after brief delay to ensure tracking
+            setTimeout(() => {
+                window.open(enrichedUrl, '_blank', 'noopener');
+            }, 100);
+        });
+    }
+
+    handleUtmParams() {
+        // Store UTM parameters from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+        
+        const utmData = {};
+        utmParams.forEach(param => {
+            const value = urlParams.get(param);
+            if (value) {
+                utmData[param] = value;
+                sessionStorage.setItem(param, value);
+            }
+        });
+
+        if (Object.keys(utmData).length > 0) {
+            this.logUtmData(utmData);
+        }
+    }
+
+    initConversionTracking() {
+        // Track successful form submissions
+        document.addEventListener('submit', (e) => {
+            if (e.target.classList.contains('newsletter-form')) {
+                this.trackConversion('newsletter_signup');
+            } else if (e.target.id === 'contactForm') {
+                this.trackConversion('contact_form');
+            }
+        });
+
+        // Track service comparisons
+        document.querySelectorAll('.comparison-table .btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.trackConversion('comparison_click', {
+                    service: btn.closest('td').previousElementSibling.textContent.trim()
+                });
             });
         });
-    };
-    
-    // Initialize affiliate link tracking
-    trackAffiliateLinks();
-    
-    // Add affiliate disclosure to all pages with affiliate links
-    const addAffiliateDisclosure = () => {
-        if (document.querySelectorAll('a[rel="sponsored"]').length > 0) {
-            const disclosure = document.createElement('div');
-            disclosure.className = 'affiliate-disclosure-banner';
-            disclosure.innerHTML = 'Ce site contient des liens affiliés. Nous pouvons toucher une commission si vous achetez via ces liens, sans coût supplémentaire pour vous.';
-            disclosure.style.backgroundColor = '#f0f7ff';
-            disclosure.style.padding = '10px 15px';
-            disclosure.style.borderRadius = '5px';
-            disclosure.style.margin = '15px 0';
-            disclosure.style.fontSize = '0.9rem';
-            disclosure.style.border = '1px solid #d0e3ff';
-            
-            // Add to top of content area
-            const firstSection = document.querySelector('section');
-            if (firstSection) {
-                document.body.insertBefore(disclosure, firstSection);
+    }
+
+    getSessionId() {
+        let sessionId = sessionStorage.getItem('affiliate_session_id');
+        if (!sessionId) {
+            sessionId = 'sess_' + Math.random().toString(36).substr(2, 9);
+            sessionStorage.setItem('affiliate_session_id', sessionId);
+        }
+        return sessionId;
+    }
+
+    getPageSection(element) {
+        const sections = ['hero', 'featured-comparisons', 'featured-services', 'recent-articles'];
+        for (const section of sections) {
+            if (element.closest(`.${section}`)) {
+                return section;
             }
         }
-    };
-    
-    // Initialize affiliate disclosure
-    addAffiliateDisclosure();
-    
-    // Function to add Google Analytics tracking code
-    const addGoogleAnalytics = () => {
-        // This would normally be your Google Analytics tracking code
-        // For demonstration purposes only
-        console.log('Google Analytics tracking initialized');
+        return 'other';
+    }
+
+    enrichUrl(url, data) {
+        const enrichedUrl = new URL(url);
         
-        /*
-        // Example Google Analytics implementation
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
-        document.head.appendChild(script);
+        // Add tracking parameters
+        enrichedUrl.searchParams.set('ref', 'healthcompare');
+        enrichedUrl.searchParams.set('session', data.sessionId);
         
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
-        */
-    };
-    
-    // Initialize Google Analytics
-    addGoogleAnalytics();
-});
+        // Add stored UTM parameters
+        const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+        utmParams.forEach(param => {
+            const value = sessionStorage.getItem(param);
+            if (value) {
+                enrichedUrl.searchParams.set(param, value);
+            }
+        });
+
+        return enrichedUrl.toString();
+    }
+
+    logAffiliateClick(data) {
+        console.info('Affiliate Click:', data);
+        
+        // Send to analytics
+        if (window.healthCompareAnalytics) {
+            window.healthCompareAnalytics.trackEvent('affiliate_click', data);
+        }
+    }
+
+    logUtmData(data) {
+        console.info('UTM Data:', data);
+    }
+
+    trackConversion(type, data = {}) {
+        const conversionData = {
+            type,
+            ...data,
+            timestamp: new Date().toISOString(),
+            sessionId: this.getSessionId(),
+            path: window.location.pathname
+        };
+
+        console.info('Conversion:', conversionData);
+        
+        // Send to analytics
+        if (window.healthCompareAnalytics) {
+            window.healthCompareAnalytics.trackEvent('conversion', conversionData);
+        }
+    }
+}
+
+// Initialize affiliate tracking
+window.affiliateTracker = new AffiliateTracker();
